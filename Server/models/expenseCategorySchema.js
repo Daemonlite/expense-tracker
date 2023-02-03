@@ -13,10 +13,14 @@ const expenseCategorySchema = new mongoose.Schema({
         type:Number,
         default:0
     },
+    purchases:{
+        type:Array,
+    },
     user:{
-     type:mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
      ref:'User'
     },
 },{
     timestamps:true,
 })
+module.exports = mongoose.model('Expense',expenseCategorySchema)

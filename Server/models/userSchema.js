@@ -19,7 +19,8 @@ const UserSchema = new mongoose.Schema(
   
     expenseCategories: {
       type: Array,
-      required:false
+      required:false,
+      ref:'Expense'
     },
     img: {
       type: String,

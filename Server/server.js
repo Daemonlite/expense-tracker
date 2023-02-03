@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended:false}))
 app.use(cors())
 
 //routes
-app.use('api/users',require('./routes/userRoutes'))
+app.use('/api/users',require('./routes/userRoutes'))
+app.use('/api/expenses',require('./routes/expenseRoute'))
 
-app.listen(port,()=>console.log`server running on port ${port}`)
+app.listen(port,()=>console.log(`server running on port ${port}`))
