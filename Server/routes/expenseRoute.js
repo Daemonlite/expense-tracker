@@ -3,7 +3,6 @@ const {getExpenses,getExpensesByUserId,addExpenseCategory,deleteExpenseCategory}
 
 
 router.get('/',getExpenses)
-router.get('/:id',getExpensesByUserId)
 router.post('/',addExpenseCategory)
 router.delete('/:id',deleteExpenseCategory)
 

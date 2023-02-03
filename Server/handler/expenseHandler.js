@@ -9,19 +9,6 @@ const getExpenses = async (req,res) => {
       res.status(200).json(expenses);
     }
 }
-const getExpensesByUserId = async(req,res) => {
-    const {user} =  req.body
-    let userExpenses;
-    try {
-        userExpenses = await Expenses.findById(user);
-    } catch (err) {
-      return console.log(err);
-    }
-    if (!userExpenses) {
-      return res.status(404).json({ message: "No expenses Found" });
-    }
-    return res.status(200).json({ user: userExpenses });
-}
 
 const addExpenseCategory = async (req,res) => {
     const {title,description,budgetAmount,user,purchases} = req.body
@@ -85,7 +72,6 @@ const addExpenseCategory = async (req,res) => {
 
 module.exports = {
     getExpenses,
-    getExpensesByUserId,
     addExpenseCategory,
     deleteExpenseCategory
 }

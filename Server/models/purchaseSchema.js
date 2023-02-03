@@ -14,8 +14,14 @@ const purchasesSchema  = mongoose.Schema({
      type:String,
      required:true
     },
-    expenseCategory:[{type:mongoose.Types.ObjectId,ref:'Expenses',required:false}],
-    user:[{type:mongoose.Types.ObjectId,ref:'User',required:false}],
+    expenseCategory:{
+        type:String,
+        required:true,
+    },
+    user:{
+        type:String,
+        required:true,
+    },
     
 },{
     timestamps:true,

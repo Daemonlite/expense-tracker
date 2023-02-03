@@ -16,5 +16,6 @@ app.use(cors())
 //routes
 app.use('/api/users',require('./routes/userRoutes'))
 app.use('/api/expenses',require('./routes/expenseRoute'))
+app.use('/api/purchases',require('./routes/purchaseRoutes'))
 
 app.listen(port,()=>console.log(`server running on port ${port}`))
