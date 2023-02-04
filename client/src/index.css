@@ -4,6 +4,9 @@
   gap: 20px;
 
 }
+.nav-list{
+  margin-top: 20px;
+}
 .nav-list-item,.list-item{
   font-size: 1.2rem;
 }
@@ -111,7 +114,7 @@ justify-content: center;
 
   font-size: 1.1rem;
 }
-.email{
+.e-mail{
   width: 450px;
   height: 50px;
   font-size: 1.2rem;
@@ -132,4 +135,145 @@ justify-content: center;
   background-color: green;
   color: #fff;
   border-radius: 8px;
+}
+.login-form{
+  border: 1px solid #fff;
+  width: 430px;
+  height: 300px;
+  margin-right: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.3);
+}
+.register-form{
+  border: 1px solid #fff;
+  width: 430px;
+  height: 350px;
+  margin-right: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.3);
+}
+.param{
+  margin-left: 10px;
+  margin-top: 17px;
+}
+.forgot{
+  color: blue;
+  display: flex;
+  justify-content: center;
+  margin-top: 17px;
+}
+a{
+  text-decoration: none;
+  color: blue;
+}
+.create{
+  border: 1px solid #fff;
+  width: 300px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:green;
+  
+ font-size: 1.3rem;
+ margin-left: 50px;
+}
+.lik{
+  color: white;
+}
+
+.Login{
+  display: flex;
+  gap: 50px;
+  margin-left: 500px;
+  margin-top: 100px;
+  
+}
+.register{
+  display: flex;
+  gap: 50px;
+  margin-left: 500px;
+  margin-top: 50px;
+}
+input{
+  width: 400px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid lightblue;
+}
+.submit{
+  border: 1px solid blue;
+  width: 400px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ background-color: blue;
+ color:#fff;
+ font-size: 1.3rem;
+ cursor: pointer;
+}
+.link{
+  margin-left: 80px;
+}
+.list-item{
+  cursor: pointer;
+}
+a{
+  color: black;
+}
+a:active{
+  color: blue;
+}
+.userName{
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.2);
+}
+.home-info{
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  
+}
+.blip{
+margin-top: 20px;
+display: block;
+}
+.budget{
+  margin-top: 34px;
+  margin-left: 20px;
+}
+.expenses{
+ margin-top: 40px;
+ display: grid;
+place-content: center;
+
+}
+
+.purchase{
+  color: blue;
+
+}
+.expense{
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  width: 500px;
+  height: 170px;
+  margin-left: 10px;
+  font-size: 1.3rem;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.2);
+  
+}
+.titles,.description,.amount,.purchases{
+  margin-left: 20px;
+  margin-top: 8px;
+}
+.titles{
+  font-weight: bold;
 }

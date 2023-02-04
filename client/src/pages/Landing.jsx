@@ -57,7 +57,7 @@ const Landing = () => {
         <p className='art-text'>Enter your email or phone number to start receiveing newsletters on simplifying your preaccounting with Spendify's expense management services.</p>
     </div>
     <form className='form'>
-        <input type="email"  placeholder='enter your email' className='email'/>
+        <input type="email"  placeholder='enter your email' className='e-mail'/>
         <br />
         <button type="submit" className='btn-sub'>Submit</button>
     </form>
