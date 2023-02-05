@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {getExpenses,getExpensesByUserId,addExpenseCategory,deleteExpenseCategory} = require('../handler/expenseHandler')
+const {getExpenses,addExpenseCategory,deleteExpenseCategory} = require('../handler/expenseHandler')
 
 
 router.get('/',getExpenses)

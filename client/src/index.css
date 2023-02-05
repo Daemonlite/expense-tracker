@@ -259,6 +259,7 @@ place-content: center;
 .purchase{
   color: blue;
 
+
 }
 .expense{
   margin-top: 10px;
@@ -276,4 +277,15 @@ place-content: center;
 }
 .titles{
   font-weight: bold;
+}
+.purchases{
+  display: flex;
+  gap: 10px;
+}
+
+select,option{
+  width: 400px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid lightblue;
 }

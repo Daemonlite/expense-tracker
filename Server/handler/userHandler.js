@@ -51,7 +51,6 @@ const register = async (req, res, next) => {
       email,
       password: hashedPassword,
       img,
-      expenseCategories
 
     })
   

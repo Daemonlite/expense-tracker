@@ -9,7 +9,16 @@ const getPurchases = async (req,res) => {
         return res.status(404).json({message:"You have no purchases"})
     }
 }
-
+const getPurchasesByExpenseCategory = async (req, res) => {
+    const expenseCategory = req.params.expenseCategory;
+    const purchases = await Purchases.find({ expenseCategory });
+    if (purchases.length) {
+      return res.status(200).json(purchases);
+    } else {
+      return res.status(404).json({ message: "No purchases found for the specified expense category" });
+    }
+  };
+  
 const createPurchase = async (req,res) => {
     const {item,price,date,expenseCategory,user} = req.body
 
@@ -17,7 +26,7 @@ const createPurchase = async (req,res) => {
         res.status(400).json({message:"enter required fields"})
     }
 
-    const purchase = await Purchases.create({
+    const purchase =  Purchases.create({
         item,
         price,
         date,
@@ -59,6 +68,7 @@ const updatePurchase = async (req, res) => {
 
 module.exports = {
     getPurchases,
+    getPurchasesByExpenseCategory,
     createPurchase,
     updatePurchase,
     deletePurchase

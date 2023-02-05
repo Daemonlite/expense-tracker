@@ -7,6 +7,8 @@ import Home from './pages/Home'
 import {ToastContainer} from'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import CreateBudget from './pages/CreateBudget';
+import CreatePurchase from './pages/CreatePurchase';
+import Purchases from './pages/Purchases';
 import Error from './components/Error';
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
       <Route path='/register' element={<Register/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/budget/create' element={<CreateBudget/>} />
+      <Route path='/create_purchase' element={<CreatePurchase/>}/>
+      <Route path='/purchases' element={<Purchases/>} />
       <Route path='*' element={<Error/>} />
     </Routes>
    </BrowserRouter>

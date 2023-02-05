@@ -12,7 +12,7 @@ const Landing = () => {
                   </p>
 
                   <div className="btn">
-                      <a href="/login" className='log'>Get Started   &#8594;</a>
+                      <a href="/register" className='log'>Get Started   &#8594;</a>
                   </div>
               </div>
 

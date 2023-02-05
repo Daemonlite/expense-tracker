@@ -23,7 +23,7 @@ const Navbar = () => {
  {user &&   <ul className='nav-list'>
         <li className='nav-list-item'><a href="/home">Home</a></li>
        <li className="nav-list-item"><a href="/budget/create" >create Budget </a></li> 
-       <li className='nav-list-item'>Contact</li>
+       <li className="nav-list-item"><a href="/purchases">view purchases</a></li>
        <li className='nav-list-item'>About</li>
       </ul>}
            

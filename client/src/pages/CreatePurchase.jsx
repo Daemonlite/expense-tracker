@@ -2,37 +2,42 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
-const CreateBudget = () => {
+import { PurchState } from "../context/context"
+const CreatePurchase = () => {
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [budgetAmount, setbudgetAmount] = useState("");
+  const [item, setItem] = useState("");
+  const [date,setDate] = useState("")
+  const [price, setPrice] = useState("");
+  const [expenseCategory, setExpenseCategory] = useState("");
   const [user, setUser] = useState("");
+  const {exp,setExp} = PurchState()
 
   useEffect(() => {
     const User = JSON.parse(localStorage.getItem("userInfo"));
     setUser(User._id);
   }, []);
+
+
+  
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/api/expenses", {
-        title,
-        budgetAmount,
-        description,
+      .post("http://localhost:4000/api/purchases", {
+        item,
+        expenseCategory,
+        price,
+        date,
         user,
       })
       .then((res) => {
-        console.log(res.data);
-        toast.success("Category created successfully");
+        toast.success("purchase added successfully");
         if (res.data) {
-          localStorage.setItem(
-            "userPurchaseCategory",
-            JSON.stringify(res.data)
-          );
-          navigate("/home");
+          navigate("/purchases");
+          setExp(res.data.price)
         }
+        
+       
       })
 
       .catch((error) => {
@@ -48,34 +53,45 @@ const CreateBudget = () => {
               <div className="title">
                 <input
                   type="text"
-                  placeholder="Enter budget title example:food,clothing etc"
+                  placeholder="what did you buy?"
                   className="username"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  value={item}
+                  onChange={(e) => setItem(e.target.value)}
                 />
               </div>
               <br />
               <div className="email">
                 <input
                   type="number"
-                  placeholder="Enter amount for budget.."
+                  placeholder="How much did you spend ?"
                   className="email"
-                  value={budgetAmount}
-                  onChange={(e) => setbudgetAmount(e.target.value)}
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
               <br />
               <div className="password">
                 <input
                   type="text"
-                  placeholder="Describe category..."
+                  placeholder="enter budget category..."
                   className="password"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={expenseCategory}
+                  onChange={(e) => setExpenseCategory(e.target.value)}
                 />
               </div>
               <br />
-              <button type="Submit" className="submit">
+              <div className="email">
+                <input
+                  type="date"
+                  placeholder="when did you make the purchase"
+                  className="email"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </div>
+
+              <br />
+              <button type="Submit" className="submit" >
                 Submit
               </button>
             </form>
@@ -88,4 +104,4 @@ const CreateBudget = () => {
   );
 };
 
-export default CreateBudget;
+export default CreatePurchase
