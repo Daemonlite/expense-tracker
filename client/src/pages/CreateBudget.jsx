@@ -7,7 +7,7 @@ const CreateBudget = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [budgetAmount, setbudgetAmount] = useState("");
+  const [budgetAmount, setbudgetAmount] = useState(0);
   const [user, setUser] = useState("");
 
   useEffect(() => {

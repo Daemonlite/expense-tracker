@@ -289,3 +289,23 @@ select,option{
   border-radius: 5px;
   border: 1px solid lightblue;
 }
+.cre{
+  font-size:1.3rem;
+  text-align: center;
+}
+.no{
+  color: blue;
+}
+.left{
+display: grid;
+place-content: center;
+}
+.sik{
+  cursor: pointer;
+  margin-top: 0px;
+}
+.siks{
+  cursor: pointer;
+  margin-left: 19px ;
+  margin-top: 4px;
+}

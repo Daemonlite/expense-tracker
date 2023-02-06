@@ -4,11 +4,10 @@ export const Data = createContext()
 
 const Context=({children})=>{
   const[purchases,setpurchases]=useState(0)
-  const [exp, setExp] = useState([]);
 
 
     return(
-        <Data.Provider value={{purchases,setpurchases,exp,setExp}}> 
+        <Data.Provider value={{purchases,setpurchases}}> 
           {children}
         </Data.Provider>
     )

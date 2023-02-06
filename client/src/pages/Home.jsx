@@ -3,11 +3,11 @@ import { PurchState } from "../context/context";
 import axios from "axios";
 import { toast } from "react-toastify";
 const Home = () => {
-  const { purchases, setpurchases } = PurchState();
+  const {  setpurchases } = PurchState();
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [greeting, setGreeting] = useState("");
   const [expense, setExpenses] = useState([]);
-  const {exp} = PurchState()
+  
  
 
 
@@ -40,7 +40,7 @@ const Home = () => {
   }, [time]);
 
   const user = JSON.parse(localStorage.getItem("userInfo"));
- console.log(exp)
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/expenses")
@@ -49,30 +49,38 @@ const Home = () => {
   }, [expense]);
 
   const filteredExpenses = expense.filter((res) => res.user === `${user._id}`);
-  const total = filteredExpenses.reduce(
+  const totalExpenses = filteredExpenses.reduce(
     (acc, expense) => acc + expense.budgetAmount,
     0
   );
-  setpurchases(total);
+
+    useEffect(()=>{
+      setpurchases(totalExpenses);
+    },[setpurchases, totalExpenses])
+    
+    const deleteExpense = (res) => {
+
+    };
   return (
     <div>
       <div className="home-info">
         <p className="userName">
-          {greeting} {user.username}!
+          {greeting} {user.username}
         </p>
 
         <h2 className="userName blip">
           <div className="budget">
-            total budget amount = ${purchases}
+            total budget amount = ${totalExpenses}
             <br />
+   
           </div>
         </h2>
       </div>
 
-      {user.expenseCategories && (
-        <div className="expenses">
+    
+      <div className="expenses">
           {filteredExpenses.map((res) => (
-            <div className="expense">
+            <div className="expense" key={res._id}>
               <div className="titles">{res.title}</div>
               <div className="amount">${res.budgetAmount}</div>
               <div className="description">{res.description}</div>
@@ -81,17 +89,20 @@ const Home = () => {
                 <a href="/create_purchase" className="purchase">
                   add purchase
                 </a>
+                
+                <p onClick={()=>axios.delete(`http://localhost:4000/api/expenses/${res._id}`)} className='purchase sik'>delete</p>
                
               </div>
             </div>
           ))}
         </div>
-      )}
-      {!user.expenseCategories && (
-        <h2>
-          No expenses created <a href="/">create</a>
-        </h2>
-      )}
+   
+      
+      {filteredExpenses.length === 0 &&  ( <p className="cre">
+          No expenses created, <a href="/budget/create" className="no">create one</a>
+        </p>)
+        }
+     
     </div>
   );
 };
