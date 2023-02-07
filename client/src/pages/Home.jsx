@@ -44,8 +44,10 @@ const Home = () => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
   useEffect(() => {
-   
-call()
+    axios
+      .get("http://localhost:4000/api/expenses")
+      .then((res) => setExpenses(res.data))
+      .catch((error) => toast.error(error.response.data));
       
   }, []);
 
@@ -55,12 +57,7 @@ call()
     0
   );
 
-  const call = async () => {
-   await  axios
-    .get("http://localhost:4000/api/expenses")
-    .then((res) => setExpenses(res.data))
-    .catch((error) => toast.error(error.response.data));
-  }
+  
  
     
    

@@ -20,9 +20,9 @@ const Purchases = () => {
     0
   );
 
-
+useEffect(()=>{
     setpurchases(total)
-
+},[setpurchases, total])
     return(
         <div>
   <div className="left">
