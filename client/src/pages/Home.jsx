@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const Home = () => {
   const { purchases } = useContext(Data);
+  const [purchase,setPurchase] = useState([])
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [greeting, setGreeting] = useState("");
   const [expense, setExpenses] = useState([]);
@@ -58,7 +59,23 @@ const Home = () => {
   );
 
   
- 
+   useEffect(()=>{
+    axios.get("http://localhost:4000/api/purchases")
+    .then((res)=>setPurchase(res.data))
+    .catch((error)=> toast.error(error.response.data))
+   })
+   
+   const filteredPurchases = purchase.filter((res) => res.user === `${user._id}`);
+   const total = filteredPurchases.reduce(
+    (acc, expense) => acc + expense.price,
+    0
+  );
+
+ useEffect(()=>{
+  if( totalExpenses === 0){
+    toast.error('you have reached your budget limit')
+  }
+ },[total, totalExpenses])
     
    
   return (
@@ -72,7 +89,7 @@ const Home = () => {
           <div className="budget">
             total budget amount = ${totalExpenses}
             <br />
-            amount left = ${ purchases - totalExpenses }
+            amount left = ${totalExpenses - total }
             <br />
   
           </div>

@@ -34,10 +34,8 @@ const CreatePurchase = () => {
         toast.success("purchase added successfully");
         if (res.data) {
           navigate("/purchases");
-       
+
         }
-        
-       
       })
 
       .catch((error) => {
