@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
-import { PurchState } from "../context/context";
+import { useState, useEffect,useContext } from "react";
+import { Data } from "../context/context";
 import axios from "axios";
 import { toast } from "react-toastify";
+
 const Home = () => {
-  const {  setpurchases } = PurchState();
+  const { purchases } = useContext(Data);
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [greeting, setGreeting] = useState("");
   const [expense, setExpenses] = useState([]);
   
+
  
 
 
@@ -42,11 +44,10 @@ const Home = () => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/api/expenses")
-      .then((res) => setExpenses(res.data))
-      .catch((error) => toast.error(error.response.data));
-  }, [expense]);
+   
+call()
+      
+  }, []);
 
   const filteredExpenses = expense.filter((res) => res.user === `${user._id}`);
   const totalExpenses = filteredExpenses.reduce(
@@ -54,13 +55,15 @@ const Home = () => {
     0
   );
 
-    useEffect(()=>{
-      setpurchases(totalExpenses);
-    },[setpurchases, totalExpenses])
+  const call = async () => {
+   await  axios
+    .get("http://localhost:4000/api/expenses")
+    .then((res) => setExpenses(res.data))
+    .catch((error) => toast.error(error.response.data));
+  }
+ 
     
-    const deleteExpense = (res) => {
-
-    };
+   
   return (
     <div>
       <div className="home-info">
@@ -72,7 +75,9 @@ const Home = () => {
           <div className="budget">
             total budget amount = ${totalExpenses}
             <br />
-   
+            amount left = ${ purchases - totalExpenses }
+            <br />
+  
           </div>
         </h2>
       </div>
@@ -84,7 +89,6 @@ const Home = () => {
               <div className="titles">{res.title}</div>
               <div className="amount">${res.budgetAmount}</div>
               <div className="description">{res.description}</div>
-
               <div className="purchases">
                 <a href="/create_purchase" className="purchase">
                   add purchase

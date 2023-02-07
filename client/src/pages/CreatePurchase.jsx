@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { PurchState } from "../context/context"
+
 const CreatePurchase = () => {
   const navigate = useNavigate();
   const [item, setItem] = useState("");
@@ -10,7 +10,7 @@ const CreatePurchase = () => {
   const [price, setPrice] = useState("");
   const [expenseCategory, setExpenseCategory] = useState("");
   const [user, setUser] = useState("");
-  const {exp,setExp} = PurchState()
+ 
 
   useEffect(() => {
     const User = JSON.parse(localStorage.getItem("userInfo"));
@@ -34,7 +34,7 @@ const CreatePurchase = () => {
         toast.success("purchase added successfully");
         if (res.data) {
           navigate("/purchases");
-          setExp(res.data.price)
+       
         }
         
        

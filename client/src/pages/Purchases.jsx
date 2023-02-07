@@ -1,11 +1,12 @@
 import axios from 'axios'
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useContext} from 'react'
 import { toast } from "react-toastify";
-import {PurchState} from '../context/context'
+import {Data} from '../context/context'
 const Purchases = () => {
    const [purchase,setPurchase] = useState([])
-   const { purchases  } = PurchState();
+   const { setpurchases } = useContext(Data);
 
+   
 
    useEffect(()=>{
     axios.get("http://localhost:4000/api/purchases")
@@ -19,14 +20,16 @@ const Purchases = () => {
     0
   );
 
+
+    setpurchases(total)
+
     return(
         <div>
   <div className="left">
   <h2 className="userName blip">
           <div className="budget">
            amount spent = ${total}
-           <br />
-            amount left = ${ purchases - total}
+          
             <br />
           </div>
         </h2>

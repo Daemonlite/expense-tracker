@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext,  useState } from "react";
 
 export const Data = createContext()
 
@@ -14,8 +14,5 @@ const Context=({children})=>{
 
 }
 
-export const PurchState = () => {
-    return useContext(Data);
-  };
 
 export default Context
