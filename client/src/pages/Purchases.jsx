@@ -1,11 +1,10 @@
 import axios from 'axios'
 import {useState,useEffect,useContext} from 'react'
 import { toast } from "react-toastify";
-import {Data} from '../context/context'
+
 const Purchases = () => {
    const [purchase,setPurchase] = useState([])
-   const { setpurchases } = useContext(Data);
-
+  
    
 
    useEffect(()=>{
@@ -20,9 +19,7 @@ const Purchases = () => {
     0
   );
 
-useEffect(()=>{
-    setpurchases(total)
-},[setpurchases, total])
+
     return(
         <div>
   <div className="left">

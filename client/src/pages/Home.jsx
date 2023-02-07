@@ -1,10 +1,10 @@
-import { useState, useEffect,useContext } from "react";
-import { Data } from "../context/context";
+import { useState, useEffect } from "react";
+
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const Home = () => {
-  const { purchases } = useContext(Data);
+ 
   const [purchase,setPurchase] = useState([])
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [greeting, setGreeting] = useState("");
@@ -71,11 +71,7 @@ const Home = () => {
     0
   );
 
- useEffect(()=>{
-  if( totalExpenses === 0){
-    toast.error('you have reached your budget limit')
-  }
- },[total, totalExpenses])
+
     
    
   return (
